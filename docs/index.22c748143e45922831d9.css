@@ -1,0 +1,16 @@
+body {
+  background-color: #eee;
+  margin: 0 0 0 0; }
+  body .main {
+    background-color: white;
+    font: 14px "Arial", sans-serif;
+    width: 90%;
+    margin: 0 auto 0 auto;
+    padding: 20px; }
+    body .main a, body .main a:visited {
+      color: inherit; }
+    body .main .footer {
+      margin-top: 20px; }
+
+
+/*# sourceMappingURL=index.22c748143e45922831d9.css.map*/
