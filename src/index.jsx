@@ -1,6 +1,7 @@
 window.JSX = require('hyperscript');
 import "./../styles/index.scss";
 import Header from "./components/Header.jsx";
+import Grid from "./components/Grid.jsx";
 
 const fetchUrl = "https://static.usabilla.com/recruitment/apidemo.json";
 
@@ -13,8 +14,7 @@ window.addEventListener("load", () => {
             document.body.appendChild(
                 <div className="main">
                     {(new Header()).render()}
-                    <div className="sections">
-                    </div>
+                    {(new Grid()).render()}
                     <div className="footer">
                         <div className="author">Developed by O.Popov, 2018</div>
                         <div className="sources">
