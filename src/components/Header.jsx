@@ -10,6 +10,9 @@ export default class Header {
     render(data) {
         return (
             <nav className="navbar navbar-expand-sm navbar-light bg-light">
+                <form className="form-inline my-2 my-md-0">
+                    <input className="form-control" type="text" placeholder="Search"/>
+                </form>
                 <button className="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#collapsable-menu-button"
                         aria-controls="collapsable-menu-button" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,9 +36,6 @@ export default class Header {
                             <a className="nav-link" href="#">5 <span className="sr-only">(current)</span></a>
                         </li>
                     </ul>
-                    <form className="form-inline my-2 my-md-0">
-                        <input className="form-control" type="text" placeholder="Search"/>
-                    </form>
                 </div>
             </nav>
         );
