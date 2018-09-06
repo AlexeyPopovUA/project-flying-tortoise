@@ -1,5 +1,6 @@
 window.JSX = require('hyperscript');
 import "./../styles/index.scss";
+import Header from "./components/Header.jsx";
 
 const fetchUrl = "https://static.usabilla.com/recruitment/apidemo.json";
 
@@ -11,6 +12,7 @@ window.addEventListener("load", () => {
 
             document.body.appendChild(
                 <div className="main">
+                    {(new Header()).render()}
                     <div className="sections">
                     </div>
                     <div className="footer">
