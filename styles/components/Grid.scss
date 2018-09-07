@@ -1,0 +1,11 @@
+.table-wrapper-scroll-y {
+  display: block;
+  max-height: 70vh;
+  overflow-y: auto;
+
+  .table {
+    tbody {
+      overflow-y: auto;
+    }
+  }
+}

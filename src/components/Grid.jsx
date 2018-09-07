@@ -2,14 +2,18 @@ import "./../../styles/components/Grid.scss";
 import "bootstrap/scss/bootstrap.scss";
 
 export default class Grid {
-    /*constructor() {
+    /**
+     * @param {{store: Store}} config
+     */
+    constructor(config) {
+        this.config = config;
+    }
 
-    }*/
-
-    render(data) {
+    render() {
+        const list = this.config.store.getData();
         return (
-            <div className="table-responsive">
-                <table className="table table-sm">
+            <div className="table-wrapper-scroll-y">
+                <table className="table table-responsive-md">
                     <thead>
                     <tr>
                         <th>Rating</th>
@@ -20,30 +24,22 @@ export default class Grid {
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                        <td>sit</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>amet</td>
-                        <td>consectetur</td>
-                        <td>adipiscing</td>
-                        <td>elit</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Integer</td>
-                        <td>nec</td>
-                        <td>odio</td>
-                        <td>Praesent</td>
-                    </tr>
+                    {list.map(item => this.renderRow(item))}
                     </tbody>
                 </table>
             </div>
+        );
+    }
+
+    renderRow(data) {
+        return (
+            <tr>
+                <td><div className="rating-badge">{data.rating}</div></td>
+                <td>{data.comment}</td>
+                <td>{data.computed_browser.Browser}</td>
+                <td>{data.computed_browser.Platform}</td>
+                <td>{data.browser.platform}</td>
+            </tr>
         );
     }
 }
