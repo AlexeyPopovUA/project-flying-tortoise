@@ -64,7 +64,9 @@ export default class Store {
     }
 
     _applyFilters() {
-        console.warn("_applyFilters");
+        console.warn("_applyFilters", this._filters);
+
+        //this.setData(this.getData().filter(item => item.rating === ))
     }
 
     /**

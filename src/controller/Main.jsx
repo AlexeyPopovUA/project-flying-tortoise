@@ -2,6 +2,7 @@ import Store from "../collection/Store.jsx";
 import Header from "../components/Header.jsx";
 import Grid from "../components/Grid.jsx";
 import Footer from "../components/Footer.jsx";
+import Filter from "../model/Filter";
 
 export default class Main {
     constructor() {
@@ -32,6 +33,9 @@ export default class Main {
     addEventListeners() {
         this.header.on("rating-selected", rating => {
             console.warn("rating-selected", rating);
+
+            this.store.filter(new Filter("rating", rating));
+            this.grid.update();
         })
     }
 }

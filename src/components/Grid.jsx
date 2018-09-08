@@ -7,27 +7,46 @@ export default class Grid {
      */
     constructor(config) {
         this.config = config;
+        this.el = null;
     }
 
     render() {
-        const list = this.config.store.getData();
-        return (
+        this.el = (
             <div className="table-wrapper-scroll-y">
-                <table className="table table-responsive-md">
-                    <thead>
-                    <tr>
-                        <th>Rating</th>
-                        <th>Comment</th>
-                        <th>Browser</th>
-                        <th>Device</th>
-                        <th>Platform</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {list.map(item => this.renderRow(item))}
-                    </tbody>
-                </table>
+                {this.renderTable(this.config.store.getData())}
             </div>
+        );
+
+        return this.el;
+    }
+
+    update() {
+        if (this.el && this.el.firstChild) {
+            const container = this.el.firstChild;
+            while (container.hasChildNodes()) {
+                container.removeChild(container.lastChild);
+            }
+
+            container.appendChild(this.renderTable(this.config.store.getData()));
+        }
+    }
+
+    renderTable(list){
+        return (
+            <table className="table table-responsive-md">
+                <thead>
+                <tr>
+                    <th>Rating</th>
+                    <th>Comment</th>
+                    <th>Browser</th>
+                    <th>Device</th>
+                    <th>Platform</th>
+                </tr>
+                </thead>
+                <tbody>
+                {list.map(item => this.renderRow(item))}
+                </tbody>
+            </table>
         );
     }
 
