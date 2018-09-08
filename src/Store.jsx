@@ -6,7 +6,7 @@ export default class Store {
         this.config = config;
         this._originalData = null;
         this.data = null;
-        this._filter = null;
+        this._filters = [];
         this._sorter = null;
     }
 
@@ -28,7 +28,7 @@ export default class Store {
         this._originalData = list;
         this.data = this._originalData.slice();
 
-        if (this._filter) {
+        if (this._filters.length > 0) {
             //filter
         }
 
@@ -48,7 +48,7 @@ export default class Store {
      * @param {{key: string, value: string|number}} filter
      */
     filter(filter) {
-        this._filter = filter;
+        this._filters = filter;
         //filter this.data
     }
 

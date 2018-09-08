@@ -1,19 +1,20 @@
 @import "vars";
 @import "./components/Shared";
-body {
-  background-color: $body-background-color;
-  margin: 0 0 0 0;
 
-  .main {
-    background-color: $main-background-color;
-    font: $default-font;
+html {
+  body {
+    background-color: $body-background-color;
+    margin: 0 0 0 0;
 
-    a, a:visited {
-      color: inherit;
-    }
+    .main {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      background-color: $main-background-color;
+      font: $default-font;
 
-    .footer {
-      margin-top: 20px;
+      a, a:visited {
+        color: inherit;
+      }
     }
   }
 }
