@@ -1,6 +1,7 @@
 window.JSX = require('hyperscript');
 import "./../styles/index.scss";
 import Header from "./components/Header.jsx";
+import Footer from "./components/Footer.jsx";
 import Grid from "./components/Grid.jsx";
 import Store from "./Store.jsx";
 
@@ -13,15 +14,10 @@ window.addEventListener("load", () => {
         .load()
         .then(() => {
             document.body.appendChild(
-                <div className="main">
+                <div className="main container-fluid">
                     {(new Header()).render()}
                     {(new Grid({store})).render()}
-                    <div className="footer">
-                        <div className="author">Developed by O.Popov, 2018</div>
-                        <div className="sources">
-                            <a href="https://github.com/AlexeyPopovUA/project-flying-tortoise">GitHub sources</a>
-                        </div>
-                    </div>
+                    {(new Footer()).render()}
                 </div>
             );
         })
