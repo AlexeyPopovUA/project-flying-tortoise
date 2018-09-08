@@ -6,7 +6,15 @@ export default class Store {
         this.config = config;
         this._originalData = null;
         this.data = null;
+        /**
+         * @type {Filter[]}
+         * @private
+         */
         this._filters = [];
+        /**
+         * @type {Sorter}
+         * @private
+         */
         this._sorter = null;
     }
 
@@ -29,11 +37,11 @@ export default class Store {
         this.data = this._originalData.slice();
 
         if (this._filters.length > 0) {
-            //filter
+            this._applyFilters();
         }
 
         if (this._sorter) {
-            //sort
+            this._applySorter();
         }
     }
 
@@ -45,18 +53,36 @@ export default class Store {
     }
 
     /**
-     * @param {{key: string, value: string|number}} filter
+     * @param {Filter} filter
      */
     filter(filter) {
-        this._filters = filter;
-        //filter this.data
+        if (!this._filters.some(item => item.key)) {
+            this._filters.push(filter);
+
+            this._applyFilters();
+        }
+    }
+
+    _applyFilters() {
+        console.warn("_applyFilters");
     }
 
     /**
-     * @param {{key: string, direction: ("ASC"|"DESC")}} sorter
+     * @param {Sorter} sorter
      */
     sort(sorter) {
         this._sorter = sorter;
-        //sort this.data
+        this._applySorter();
+    }
+
+    _applySorter() {
+        console.warn("_applySorter");
+    }
+
+    destroy() {
+        this.data = null;
+        this._originalData = null;
+        this._filters.length = 0;
+        this._sorter = null;
     }
 }
