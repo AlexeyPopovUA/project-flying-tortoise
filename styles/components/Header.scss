@@ -1,3 +1,23 @@
-.header {
+@import "./../vars";
 
+.header {
+  background-color: $main-background-color;
+
+  .navbar {
+    padding-left: 0;
+    padding-right: 0;
+
+    .comment-search {
+      margin-right: 10px;
+    }
+
+    .rating-list {
+      margin-top: 10px;
+      margin-bottom: 10px;
+
+      .rating-badge {
+        cursor: pointer;
+      }
+    }
+  }
 }

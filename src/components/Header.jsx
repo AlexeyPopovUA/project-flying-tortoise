@@ -14,21 +14,21 @@ export default class Header extends EventEmitter {
 
     render() {
         this.el = (
-            <header>
-                <nav className="navbar navbar-expand-sm navbar-light bg-light">
+            <header className="header">
+                <nav className="navbar navbar-expand-sm navbar-light">
                     <form className="form-inline my-2 my-md-0">
                         <input className="form-control comment-search" type="text" placeholder="Search"/>
                     </form>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#collapsable-menu-button"
-                            aria-controls="collapsable-menu-button" aria-expanded="false"
+                            data-target="#collapsable-menu"
+                            aria-controls="collapsable-menu" aria-expanded="false"
                             aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"/>
                     </button>
-                    <div className="collapse navbar-collapse" id="collapsable-menu-button">
-                        <ul className="navbar-nav mr-auto">
+                    <div className="collapse navbar-collapse" id="collapsable-menu">
+                        <div className="rating-list">
                             {supportedRatings.map(rating => this.renderRatingItem(rating))}
-                        </ul>
+                        </div>
                     </div>
                 </nav>
             </header>
@@ -45,17 +45,12 @@ export default class Header extends EventEmitter {
      */
     renderRatingItem(rating) {
         return (
-            <li className="nav-item">
-                <a className="nav-link rating-item" href="#" data-rating={rating}>
-                    <div className="rating-badge">{rating}</div>
-                    <span className="sr-only">(current)</span>
-                </a>
-            </li>
+            <div className="rating-item rating-badge" data-rating={rating}>{rating}</div>
         );
     }
 
     addEventListeners() {
-        this.el.addEventListener("click", event => {
+        this.el.querySelector(".rating-list").addEventListener("click", event => {
             event.stopPropagation();
             event.preventDefault();
 

@@ -12,7 +12,7 @@ export default class Grid {
 
     render() {
         this.el = (
-            <div className="table-wrapper-scroll-y">
+            <div className="table-wrapper">
                 {this.renderTable(this.config.store.getData())}
             </div>
         );

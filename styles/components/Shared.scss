@@ -1,9 +1,15 @@
+@import "./../vars";
+
 .rating-badge {
+  display: inline-block;
   color: white;
   text-align: center;
-  padding-top: 4px;
-  background-color: dodgerblue;
-  border-radius: 25px;
-  width: 25px;
-  height: 25px;
+  background-color: $rating-icon-color;
+  border-color: $rating-icon-color;
+  padding-top: 7px;
+  padding-left: 0;
+  margin-right: 10px;
+  border-radius: 30px;
+  width: 30px;
+  height: 30px;
 }

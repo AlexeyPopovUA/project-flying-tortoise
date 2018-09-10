@@ -1,10 +1,16 @@
-.table-wrapper-scroll-y {
+@import "./../vars";
+
+.table-wrapper {
   background-color: #FFFFFF;
   display: block;
   max-height: 70vh;
   overflow-y: auto;
 
   .table {
+    thead {
+      background-color: $grid-header-color;
+      color: $grid-header-text-color;
+    }
     tbody {
       overflow-y: auto;
     }
