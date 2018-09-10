@@ -2,6 +2,9 @@ import "./../../styles/components/Header.scss";
 import "bootstrap/scss/bootstrap.scss";
 import "bootstrap/js/src/collapse.js";
 import EventEmitter from 'events';
+import throttle from "lodash/throttle";
+
+const supportedRatings = [1, 2, 3, 4, 5];
 
 export default class Header extends EventEmitter {
     constructor() {
@@ -14,7 +17,7 @@ export default class Header extends EventEmitter {
             <header>
                 <nav className="navbar navbar-expand-sm navbar-light bg-light">
                     <form className="form-inline my-2 my-md-0">
-                        <input className="form-control" type="text" placeholder="Search"/>
+                        <input className="form-control comment-search" type="text" placeholder="Search"/>
                     </form>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#collapsable-menu-button"
@@ -24,7 +27,7 @@ export default class Header extends EventEmitter {
                     </button>
                     <div className="collapse navbar-collapse" id="collapsable-menu-button">
                         <ul className="navbar-nav mr-auto">
-                            {[1, 2, 3, 4, 5].map(rating => this.renderRatingItem(rating))}
+                            {supportedRatings.map(rating => this.renderRatingItem(rating))}
                         </ul>
                     </div>
                 </nav>
@@ -62,5 +65,11 @@ export default class Header extends EventEmitter {
                 this.emit("rating-selected", ratingEl.dataset.rating);
             }
         });
+
+        const throttledCommentChange = throttle(this.emit.bind(this, "comment-filter-change"), 200, {
+            leading: false,
+            trailing: true
+        });
+        this.el.querySelector(".comment-search").addEventListener("input", e => throttledCommentChange(e.target.value));
     }
 }

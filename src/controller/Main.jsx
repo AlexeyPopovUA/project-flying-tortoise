@@ -32,7 +32,12 @@ export default class Main {
 
     addEventListeners() {
         this.header.on("rating-selected", rating => {
-            this.store.filter(new Filter("rating", parseInt(rating)));
+            this.store.filter(new Filter("rating", parseInt(rating), Filter.TYPE.EQUALS));
+            this.grid.update();
+        });
+
+        this.header.on("comment-filter-change", filterValue => {
+            this.store.filter(new Filter("comment", filterValue, Filter.TYPE.CONTAINS));
             this.grid.update();
         });
     }
