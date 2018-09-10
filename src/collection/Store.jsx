@@ -55,23 +55,16 @@ export default class Store {
     }
 
     /**
-     * @param {Filter} filter
+     * @param {Filter[]} filters
      */
-    filter(filter) {
-        const sameFilter = this._filters.find(item => item.key === filter.key);
+    setFilters(filters) {
+        this._filters = filters;
 
-        if (sameFilter) {
-            if (sameFilter.value !== filter.value) {
-                sameFilter.value = filter.value;
-                this._applyFilters();
-            }
-        } else {
-            this._filters.push(filter);
-            this._applyFilters();
-        }
+        this._applyFilters();
     }
 
     _applyFilters() {
+        console.log("this._filters", this._filters);
         let newData = this._originalData.slice();
 
         this._filters.forEach(filter => {
@@ -81,7 +74,7 @@ export default class Store {
                 } else if (filter.type === Filter.TYPE.CONTAINS) {
                     return `${item[filter.key]}`.includes(filter.value);
                 } else {
-                    //unknown filter type
+                    //unknown setFilters type
                     return false;
                 }
             })

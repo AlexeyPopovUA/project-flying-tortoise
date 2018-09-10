@@ -31,8 +31,13 @@ export default class Main {
     }
 
     addEventListeners() {
-        this.header.on("rating-selected", rating => {
-            this.store.filter(new Filter("rating", parseInt(rating), Filter.TYPE.EQUALS));
+        this.header.on("rating-selected", ratingList => {
+            const filterValues = this.header.getValues();
+            const filters = [
+                ...filterValues.ratings.map(rating => new Filter("rating", rating, Filter.TYPE.EQUALS)),
+                new Filter("comment", filterValues.search, Filter.TYPE.CONTAINS)
+            ];
+            this.store.setFilters(filters);
             this.grid.update();
         });
 
