@@ -2,7 +2,7 @@ export default class Filter {
     /**
      * @param {string} key
      * @param {string|number} value
-     * @param {string} type - filter type ("equals" or "contains")
+     * @param {string} type - setFilters type ("equals" or "contains")
      */
     constructor(key, value, type = Filter.TYPE.EQUALS) {
         /**

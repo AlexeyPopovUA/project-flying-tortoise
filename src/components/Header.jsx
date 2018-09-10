@@ -3,6 +3,7 @@ import "bootstrap/scss/bootstrap.scss";
 import "bootstrap/js/src/collapse.js";
 import EventEmitter from 'events';
 import throttle from "lodash/throttle";
+import sortedIndex from "lodash/sortedIndex";
 
 const supportedRatings = [1, 2, 3, 4, 5];
 
@@ -10,6 +11,7 @@ export default class Header extends EventEmitter {
     constructor() {
         super();
         this.el = null;
+        this.enabledRatings = supportedRatings.slice();
     }
 
     render() {
@@ -45,7 +47,8 @@ export default class Header extends EventEmitter {
      */
     renderRatingItem(rating) {
         return (
-            <div className="rating-item rating-badge" data-rating={rating}>{rating}</div>
+            <div className={`rating-item rating-badge ${this.enabledRatings.includes(rating) ? "active" : ""}`}
+                 data-rating={rating}>{rating}</div>
         );
     }
 
@@ -57,14 +60,39 @@ export default class Header extends EventEmitter {
             const ratingEl = event.target.closest(".rating-item");
 
             if (ratingEl) {
-                this.emit("rating-selected", ratingEl.dataset.rating);
+                const rating = parseInt(ratingEl.dataset.rating);
+                this.updateEnabledFilters(rating);
             }
         });
 
-        const throttledCommentChange = throttle(this.emit.bind(this, "comment-filter-change"), 200, {
+        const throttledCommentChange = throttle(this.emit.bind(this, "comment-setFilters-change"), 200, {
             leading: false,
             trailing: true
         });
         this.el.querySelector(".comment-search").addEventListener("input", e => throttledCommentChange(e.target.value));
+    }
+
+    updateEnabledFilters(filterValue) {
+        if (this.enabledRatings.includes(filterValue)) {
+            this.enabledRatings.splice(this.enabledRatings.indexOf(filterValue), 1);
+        } else {
+            this.enabledRatings.splice(sortedIndex(this.enabledRatings, filterValue), 0, filterValue);
+        }
+
+        //when nothing is active - reset to "all active"
+        if (this.enabledRatings.length === 0) {
+            this.enabledRatings = supportedRatings.slice();
+        }
+
+        this.emit("rating-selected", this.enabledRatings.slice());
+
+        console.warn("enabled", this.enabledRatings);
+    }
+
+    getValues() {
+        return {
+            ratings: this.enabledRatings,
+            search: this.el.querySelector(".comment-search").value
+        }
     }
 }
