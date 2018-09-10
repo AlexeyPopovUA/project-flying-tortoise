@@ -32,10 +32,8 @@ export default class Main {
 
     addEventListeners() {
         this.header.on("rating-selected", rating => {
-            console.warn("rating-selected", rating);
-
-            this.store.filter(new Filter("rating", rating));
+            this.store.filter(new Filter("rating", parseInt(rating)));
             this.grid.update();
-        })
+        });
     }
 }

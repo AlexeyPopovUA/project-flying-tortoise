@@ -1,3 +1,5 @@
+import Filter from "./../model/Filter";
+
 export default class Store {
     /**
      * @param {{url: string}} config
@@ -56,17 +58,36 @@ export default class Store {
      * @param {Filter} filter
      */
     filter(filter) {
-        if (!this._filters.some(item => item.key)) {
-            this._filters.push(filter);
+        const sameFilter = this._filters.find(item => item.key === filter.key);
 
+        if (sameFilter) {
+            if (sameFilter.value !== filter.value) {
+                sameFilter.value = filter.value;
+                this._applyFilters();
+            }
+        } else {
+            this._filters.push(filter);
             this._applyFilters();
         }
     }
 
     _applyFilters() {
-        console.warn("_applyFilters", this._filters);
+        let newData = this._originalData.slice();
 
-        //this.setData(this.getData().filter(item => item.rating === ))
+        this._filters.forEach(filter => {
+            newData = newData.filter(item => {
+                if (filter.type === Filter.TYPE.EQUALS) {
+                    return item[filter.key] === filter.value;
+                } else if (filter.type === Filter.TYPE.CONTAINS) {
+                    return `${item[filter.key]}`.includes(filter.value);
+                } else {
+                    //unknown filter type
+                    return false;
+                }
+            })
+        });
+
+        this.data = newData;
     }
 
     /**
