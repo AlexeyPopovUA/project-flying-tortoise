@@ -19,7 +19,7 @@ export default class Header extends EventEmitter {
             <header className="header">
                 <nav className="navbar navbar-expand-sm navbar-light">
                     <form className="form-inline my-2 my-md-0">
-                        <input className="form-control comment-search" type="text" placeholder="Search"/>
+                        <input className="form-control comment-search" type="text" placeholder="Search here!"/>
                     </form>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#collapsable-menu"
