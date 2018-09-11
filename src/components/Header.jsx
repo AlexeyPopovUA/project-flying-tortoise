@@ -65,11 +65,11 @@ export default class Header extends EventEmitter {
             }
         });
 
-        const throttledCommentChange = throttle(this.emit.bind(this, "comment-setFilters-change"), 200, {
+        const throttledCommentChange = throttle(this.emit.bind(this, "filters-changed"), 200, {
             leading: false,
             trailing: true
         });
-        this.el.querySelector(".comment-search").addEventListener("input", e => throttledCommentChange(e.target.value));
+        this.el.querySelector(".comment-search").addEventListener("input", throttledCommentChange);
     }
 
     updateEnabledFilters(filterValue) {
@@ -84,9 +84,7 @@ export default class Header extends EventEmitter {
             this.enabledRatings = supportedRatings.slice();
         }
 
-        this.emit("rating-selected", this.enabledRatings.slice());
-
-        console.warn("enabled", this.enabledRatings);
+        this.emit("filters-changed");
     }
 
     getValues() {
