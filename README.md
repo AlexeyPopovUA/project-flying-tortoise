@@ -1,2 +1,19 @@
 # project-flying-tortoise
-Relax, it's just a grid view :)
+
+It's a grid view :)
+
+Demo [link](https://alexeypopovua.github.io/project-flying-tortoise/)
+
+Dev build with watch mode:
+
+*npm run build-dev*
+
+Prod build:
+
+*npm run build-prod*
+
+Release into github.io:
+
+*npm run build-prod*
+
+and git commit and push :)
