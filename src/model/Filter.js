@@ -10,7 +10,7 @@ export default class Filter {
          */
         this.key = key;
         /**
-         * @type {string|number}
+         * @type {string|number|Array}
          */
         this.value = value;
 
@@ -24,5 +24,6 @@ export default class Filter {
 
 Filter.TYPE = {
     EQUALS: "EQUALS",
-    CONTAINS: "CONTAINS"
+    CONTAINS: "CONTAINS",
+    IN_LIST: "IN_LIST"
 };

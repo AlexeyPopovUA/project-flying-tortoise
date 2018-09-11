@@ -70,9 +70,14 @@ export default class Store {
         this._filters.forEach(filter => {
             newData = newData.filter(item => {
                 if (filter.type === Filter.TYPE.EQUALS) {
+                    //strict comparison
                     return item[filter.key] === filter.value;
                 } else if (filter.type === Filter.TYPE.CONTAINS) {
+                    //string matching
                     return `${item[filter.key]}`.includes(filter.value);
+                } else if (filter.type === Filter.TYPE.IN_LIST) {
+                    //strict comparison
+                    return filter.value.includes(item[filter.key]);
                 } else {
                     //unknown setFilters type
                     return false;

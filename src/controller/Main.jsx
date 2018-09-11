@@ -31,18 +31,15 @@ export default class Main {
     }
 
     addEventListeners() {
-        this.header.on("rating-selected", ratingList => {
+        this.header.on("filters-changed", () => {
             const filterValues = this.header.getValues();
-            const filters = [
-                ...filterValues.ratings.map(rating => new Filter("rating", rating, Filter.TYPE.EQUALS)),
-                new Filter("comment", filterValues.search, Filter.TYPE.CONTAINS)
-            ];
-            this.store.setFilters(filters);
-            this.grid.update();
-        });
+            const filters = [new Filter("rating", filterValues.ratings, Filter.TYPE.IN_LIST)];
 
-        this.header.on("comment-filter-change", filterValue => {
-            this.store.filter(new Filter("comment", filterValue, Filter.TYPE.CONTAINS));
+            if (filterValues.search.length > 0) {
+                filters.push(new Filter("comment", filterValues.search, Filter.TYPE.CONTAINS));
+            }
+
+            this.store.setFilters(filters);
             this.grid.update();
         });
     }
