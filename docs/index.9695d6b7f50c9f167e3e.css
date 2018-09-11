@@ -1,24 +1,28 @@
-.header {
-  background-color: #EEF3F7; }
-  .header .navbar {
-    padding-left: 0;
-    padding-right: 0; }
-    .header .navbar .comment-search {
-      margin-right: 10px; }
-    .header .navbar .rating-list {
-      margin-top: 10px;
-      margin-bottom: 10px; }
-      .header .navbar .rating-list .rating-item {
-        cursor: pointer;
-        color: #ced4da;
-        background-color: #EEF3F7;
-        border-color: #ced4da;
-        border-width: 1px;
-        border-style: solid; }
-        .header .navbar .rating-list .rating-item.active {
-          color: white;
-          background-color: #07A3C2;
-          border-color: #07A3C2; }
+.header .dashboard-wrapper {
+  text-align: center; }
+  .header .dashboard-wrapper .dashboard-icon {
+    height: 1.5em; }
+
+.header .navbar {
+  background-color: #EEF3F7;
+  padding-left: 0;
+  padding-right: 0; }
+  .header .navbar .comment-search {
+    margin-right: 10px; }
+  .header .navbar .rating-list {
+    margin-top: 10px;
+    margin-bottom: 10px; }
+    .header .navbar .rating-list .rating-item {
+      cursor: pointer;
+      color: #ced4da;
+      background-color: #EEF3F7;
+      border-color: #ced4da;
+      border-width: 1px;
+      border-style: solid; }
+      .header .navbar .rating-list .rating-item.active {
+        color: white;
+        background-color: #07A3C2;
+        border-color: #07A3C2; }
 
 /*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
@@ -6373,4 +6377,4 @@ html body {
       color: inherit; }
 
 
-/*# sourceMappingURL=index.1dc20418c0e09ef91a03.css.map*/
+/*# sourceMappingURL=index.9695d6b7f50c9f167e3e.css.map*/
