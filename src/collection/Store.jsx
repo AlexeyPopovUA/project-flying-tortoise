@@ -64,7 +64,6 @@ export default class Store {
     }
 
     _applyFilters() {
-        console.log("this._filters", this._filters);
         let newData = this._originalData.slice();
 
         this._filters.forEach(filter => {

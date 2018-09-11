@@ -15,8 +15,19 @@
       margin-top: 10px;
       margin-bottom: 10px;
 
-      .rating-badge {
+      .rating-item {
         cursor: pointer;
+        color: $rating-icon-unused-text-color;
+        background-color: $main-background-color;
+        border-color: $rating-icon-unused-text-color;
+        border-width: 1px;
+        border-style: solid;
+
+        &.active {
+          color: white;
+          background-color: $rating-icon-color;
+          border-color: $rating-icon-color;
+        }
       }
     }
   }
