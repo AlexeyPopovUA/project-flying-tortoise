@@ -84,13 +84,22 @@ export default class Header extends EventEmitter {
             this.enabledRatings = supportedRatings.slice();
         }
 
+        this.updateFilterUsage();
         this.emit("filters-changed");
+    }
+
+    updateFilterUsage() {
+        const ratingFilterElList = this.el.querySelectorAll(".rating-list .rating-item");
+        const cls = "active";
+
+        ratingFilterElList.forEach(el => this.enabledRatings.includes(parseInt(el.dataset.rating)) ?
+            el.classList.add(cls) : el.classList.remove(cls));
     }
 
     getValues() {
         return {
             ratings: this.enabledRatings,
             search: this.el.querySelector(".comment-search").value
-        }
+        };
     }
 }
