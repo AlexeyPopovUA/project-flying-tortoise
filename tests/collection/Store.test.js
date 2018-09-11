@@ -1,7 +1,6 @@
 import Store from "../../src/collection/Store";
-import Filter from "../../src/model/Filter";
 
-describe("Store", () => {
+describe("Store::Unit", () => {
     let store;
     const responseMock = {
         json: () => Promise.resolve({
@@ -61,61 +60,6 @@ describe("Store", () => {
             .then(data => {
                 expect(data).toBeDefined();
                 expect(data.length).toBe(4);
-                done();
-            })
-            .catch(e => done(e));
-    });
-
-    it("Should have strict filtering", done => {
-        store = new Store({url: ""});
-        global.fetch = () => Promise.resolve(responseMock);
-
-        store.load()
-            .then(data => {
-                expect(store.getData().length).toBe(4);
-                store.setFilters([
-                    new Filter("name", data[0].name)
-                ]);
-                expect(store.getData().length).toBe(1);
-                done();
-            })
-            .catch(e => done(e));
-    });
-
-    it("Should have non strict filtering", done => {
-        store = new Store({url: ""});
-        global.fetch = () => Promise.resolve(responseMock);
-
-        store.load()
-            .then(data => {
-                expect(store.getData().length).toBe(4);
-                store.setFilters([
-                    new Filter("name", "test3", Filter.TYPE.CONTAINS)
-                ]);
-                expect(store.getData().length).toBe(2);
-                done();
-            })
-            .catch(e => done(e));
-    });
-
-    it("Should use new filters each time on setFilters", done => {
-        store = new Store({url: ""});
-        global.fetch = () => Promise.resolve(responseMock);
-
-        store.load()
-            .then(data => {
-                expect(store.getData().length).toBe(4);
-
-                store.setFilters([
-                    new Filter("name", data[0].name)
-                ]);
-                expect(store.getData().length).toBe(1);
-
-                store.setFilters([
-                    new Filter("name", "test3", Filter.TYPE.CONTAINS)
-                ]);
-                expect(store.getData().length).toBe(2);
-
                 done();
             })
             .catch(e => done(e));
