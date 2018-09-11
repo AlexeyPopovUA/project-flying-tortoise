@@ -6,7 +6,17 @@ export default class Store {
      */
     constructor(config) {
         this.config = config;
+
+        /**
+         * Keeps original version of data
+         * @type {Array}
+         * @private
+         */
         this._originalData = null;
+        /**
+         * Keeps filtered/sorted data
+         * @type {Array}
+         */
         this.data = null;
         /**
          * @type {Filter[]}
@@ -14,12 +24,17 @@ export default class Store {
          */
         this._filters = [];
         /**
+         * todo Implement sorting
          * @type {Sorter}
          * @private
          */
         this._sorter = null;
     }
 
+    /**
+     * Loads data from remote source and saves it into the store
+     * @returns {Promise<Array>}
+     */
     load() {
         return fetch(this.config.url)
             .then(result => result.json())
@@ -34,6 +49,11 @@ export default class Store {
             .then(() => this.getData());
     }
 
+    /**
+     * Replaces saved data with new list
+     * Applies filters/sorters
+     * @param list
+     */
     setData(list) {
         this._originalData = list;
         this.data = this._originalData.slice();
@@ -48,13 +68,15 @@ export default class Store {
     }
 
     /**
-     * @returns {*[]}
+     * Retrieves stored data with filters/sorters applied
+     * @returns {Array}
      */
     getData() {
         return this.data.slice();
     }
 
     /**
+     * Sets and applies new filters
      * @param {Filter[]} filters
      */
     setFilters(filters) {
@@ -63,6 +85,10 @@ export default class Store {
         this._applyFilters();
     }
 
+    /**
+     * Saves filtered data
+     * @private
+     */
     _applyFilters() {
         let newData = this._originalData.slice();
 
@@ -88,6 +114,7 @@ export default class Store {
     }
 
     /**
+     * todo Implement
      * @param {Sorter} sorter
      */
     sort(sorter) {
@@ -95,10 +122,17 @@ export default class Store {
         this._applySorter();
     }
 
+    /**
+     * todo Implement
+     * @private
+     */
     _applySorter() {
         console.warn("_applySorter");
     }
 
+    /**
+     * For tests
+     */
     destroy() {
         this.data = null;
         this._originalData = null;

@@ -7,6 +7,9 @@ export default class Grid {
      */
     constructor(config) {
         this.config = config;
+        /**
+         * @type {HTMLElement}
+         */
         this.el = null;
     }
 
@@ -20,6 +23,9 @@ export default class Grid {
         return this.el;
     }
 
+    /**
+     * Re-renders the grid with fresh data
+     */
     update() {
         if (this.el && this.el.firstChild) {
             const container = this.el.firstChild;
@@ -31,7 +37,11 @@ export default class Grid {
         }
     }
 
-    renderTable(list){
+    /**
+     * @param {Array} list
+     * @returns {HTMLElement}
+     */
+    renderTable(list) {
         return (
             <table className="table table-responsive-md">
                 <thead>
@@ -50,10 +60,17 @@ export default class Grid {
         );
     }
 
+    /**
+     * todo Maybe, ot should use simple remapped data from model
+     * @param data
+     * @returns {*}
+     */
     renderRow(data) {
         return (
             <tr>
-                <td><div className="rating-badge">{data.rating}</div></td>
+                <td>
+                    <div className="rating-badge">{data.rating}</div>
+                </td>
                 <td>{data.comment}</td>
                 <td>{data.computed_browser.Browser}</td>
                 <td>{data.computed_browser.Platform}</td>

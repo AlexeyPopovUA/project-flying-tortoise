@@ -10,7 +10,14 @@ const supportedRatings = [1, 2, 3, 4, 5];
 export default class Header extends EventEmitter {
     constructor() {
         super();
+        /**
+         * @type {HTMLElement}
+         */
         this.el = null;
+        /**
+         * Keeps the state of rating filters
+         * @type {number[]}
+         */
         this.enabledRatings = supportedRatings.slice();
     }
 
@@ -60,8 +67,7 @@ export default class Header extends EventEmitter {
             const ratingEl = event.target.closest(".rating-item");
 
             if (ratingEl) {
-                const rating = parseInt(ratingEl.dataset.rating);
-                this.updateEnabledFilters(rating);
+                this.updateEnabledFilters(parseInt(ratingEl.dataset.rating));
             }
         });
 
@@ -72,6 +78,10 @@ export default class Header extends EventEmitter {
         this.el.querySelector(".comment-search").addEventListener("input", throttledCommentChange);
     }
 
+    /**
+     * Saves the state of rating filter
+     * @param filterValue
+     */
     updateEnabledFilters(filterValue) {
         if (this.enabledRatings.includes(filterValue)) {
             this.enabledRatings.splice(this.enabledRatings.indexOf(filterValue), 1);
@@ -88,6 +98,9 @@ export default class Header extends EventEmitter {
         this.emit("filters-changed");
     }
 
+    /**
+     * Refreshes state of filters on UI
+     */
     updateFilterUsage() {
         const ratingFilterElList = this.el.querySelectorAll(".rating-list .rating-item");
         const cls = "active";
@@ -96,6 +109,10 @@ export default class Header extends EventEmitter {
             el.classList.add(cls) : el.classList.remove(cls));
     }
 
+    /**
+     * Returns filters values
+     * @returns {{ratings: number[] | *, search: *}}
+     */
     getValues() {
         return {
             ratings: this.enabledRatings,

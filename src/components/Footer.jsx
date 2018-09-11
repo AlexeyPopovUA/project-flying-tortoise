@@ -1,6 +1,9 @@
 import "./../../styles/components/Footer.scss";
 
 export default class Footer {
+    /**
+     * @returns {HTMLElement}
+     */
     render() {
         return (
             <div className="footer">
