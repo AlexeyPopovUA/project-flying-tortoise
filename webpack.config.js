@@ -68,6 +68,10 @@ module.exports = env => {
                     loader: "source-map-loader",
                     test: /\.jsx$/,
                     enforce: "pre"
+                },
+                {
+                    test: /\.svg$/,
+                    loader: 'icons-loader',
                 }
             ]
         }

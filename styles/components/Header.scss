@@ -1,9 +1,15 @@
 @import "./../vars";
 
 .header {
-  background-color: $main-background-color;
+  .dashboard-wrapper {
+    text-align: center;
+    .dashboard-icon {
+      height: 1.5em;
+    }
+  }
 
   .navbar {
+    background-color: $main-background-color;
     padding-left: 0;
     padding-right: 0;
 
