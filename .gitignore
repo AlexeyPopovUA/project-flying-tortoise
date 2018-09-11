@@ -28,3 +28,4 @@ fabric.properties
 /dist/
 /bower_components/
 /.idea/sonarlint/issuestore/
+/coverage/

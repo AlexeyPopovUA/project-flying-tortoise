@@ -4,7 +4,8 @@
   "description": "Grid view",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "coverage": "npm test -- --coverage --no-cache",
     "build-prod": "webpack --config webpack.config.js --env.prod",
     "build-release": "webpack --config webpack.config.js --env.prod --env.release",
     "build-dev": "webpack --config webpack.config.js  --env.dev"
@@ -25,14 +26,23 @@
   },
   "homepage": "https://github.com/AlexeyPopovUA/project-flying-tortoise#readme",
   "devDependencies": {
+    "@types/es6-promise": "^3.3.0",
+    "@types/jest": "^23.3.2",
+    "@types/lodash": "^4.14.116",
+    "@types/node": "^10.9.4",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.11",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.6.0",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
+    "react-test-renderer": "^16.5.0",
     "sass-loader": "^7.0.3",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.21.0",
@@ -45,5 +55,23 @@
     "hyperscript": "^2.0.2",
     "jquery": "^3.3.1",
     "lodash": "^4.17.10"
+  },
+  "jest": {
+    "transform": {
+      ".(jsx|js)": "babel-jest"
+    },
+    "collectCoverageFrom": [
+      "src/**/*.*"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/tests/",
+      "/node_modules/"
+    ],
+    "testEnvironment": "node",
+    "testRegex": "tests/.*\\.test\\.js$",
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ]
   }
 }

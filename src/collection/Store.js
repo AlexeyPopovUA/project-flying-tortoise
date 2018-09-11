@@ -39,7 +39,7 @@ export default class Store {
         return fetch(this.config.url)
             .then(result => result.json())
             .then(json => {
-                console.warn("fetch", json);
+                //console.warn("fetch", json);
                 this.setData(json.items);
             })
             .catch(error => {

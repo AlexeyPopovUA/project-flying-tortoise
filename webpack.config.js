@@ -13,7 +13,7 @@ module.exports = env => {
 
     return {
         entry: {
-            index: './src/index.jsx'
+            index: './src/index.js'
         },
         target: "web",
         mode,

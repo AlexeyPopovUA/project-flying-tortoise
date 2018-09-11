@@ -1,4 +1,4 @@
-import Store from "../collection/Store.jsx";
+import Store from "../collection/Store.js";
 import Header from "../components/Header.jsx";
 import Grid from "../components/Grid.jsx";
 import Footer from "../components/Footer.jsx";

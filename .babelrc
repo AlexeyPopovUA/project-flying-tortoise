@@ -1,6 +1,6 @@
 {
   "presets": [
-    "react"
+    ["env", { "modules": false }], "react"
   ],
   "plugins": [
     [
@@ -8,6 +8,7 @@
       {
         "pragma": "JSX"
       }
-    ]
+    ],
+    "transform-es2015-modules-commonjs"
   ]
 }
