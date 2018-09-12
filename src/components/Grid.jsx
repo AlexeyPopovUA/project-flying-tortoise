@@ -72,9 +72,12 @@ export default class Grid {
                     <div className="rating-badge">{data.rating}</div>
                 </td>
                 <td>{data.comment}</td>
-                <td>{data.computed_browser.Browser}</td>
-                <td>{data.computed_browser.Platform}</td>
-                <td>{data.browser.platform}</td>
+                <td className="browser-info">
+                    <div>{data.computed_browser.Browser}</div>
+                    <div>{data.computed_browser.Version}</div>
+                </td>
+                <td className="device">{data.computed_browser.Platform}</td>
+                <td className="platform">{data.browser.platform}</td>
             </tr>
         );
     }

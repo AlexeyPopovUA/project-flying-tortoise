@@ -13,6 +13,10 @@
     }
     tbody {
       overflow-y: auto;
+
+      .browser-info, .device, .platform {
+        text-align: center;
+      }
     }
   }
 }
