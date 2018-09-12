@@ -1,7 +1,7 @@
 import Store from "../collection/Store.js";
-import Header from "../components/Header.jsx";
-import Grid from "../components/Grid.jsx";
-import Footer from "../components/Footer.jsx";
+import Header from "../view/Header.jsx";
+import Grid from "../view/Grid.jsx";
+import Footer from "../view/Footer.jsx";
 import Filter from "../model/Filter";
 import Sorter from "../model/Sorter";
 
