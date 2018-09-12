@@ -27,13 +27,12 @@ export default class Grid {
      * Re-renders the grid with fresh data
      */
     update() {
-        if (this.el && this.el.firstChild) {
-            const container = this.el.firstChild;
-            while (container.hasChildNodes()) {
-                container.removeChild(container.lastChild);
+        if (this.el) {
+            while (this.el.hasChildNodes()) {
+                this.el.removeChild(this.el.lastChild);
             }
 
-            container.appendChild(this.renderTable(this.config.store.getData()));
+            this.el.appendChild(this.renderTable(this.config.store.getData()));
         }
     }
 
@@ -43,7 +42,7 @@ export default class Grid {
      */
     renderTable(list) {
         return (
-            <table className="table table-responsive-md">
+            <table className="table">
                 <thead>
                 <tr>
                     <th>Rating</th>
@@ -63,7 +62,7 @@ export default class Grid {
     /**
      * todo Maybe, ot should use simple remapped data from model
      * @param data
-     * @returns {*}
+     * @returns {HTMLElement}
      */
     renderRow(data) {
         return (
