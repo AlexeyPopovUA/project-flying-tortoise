@@ -1,5 +1,7 @@
 # project-flying-tortoise
 
+[![Build Status](https://travis-ci.org/AlexeyPopovUA/project-flying-tortoise.svg?branch=master)](https://travis-ci.org/AlexeyPopovUA/project-flying-tortoise)
+
 It's a grid view :)
 
 Demo [link](https://alexeypopovua.github.io/project-flying-tortoise/)
