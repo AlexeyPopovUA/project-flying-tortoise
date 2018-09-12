@@ -6348,6 +6348,8 @@ a.text-dark:hover, a.text-dark:focus {
     color: #FFFFFF; }
   .table-wrapper .table tbody {
     overflow-y: auto; }
+    .table-wrapper .table tbody .browser-info, .table-wrapper .table tbody .device, .table-wrapper .table tbody .platform {
+      text-align: center; }
 
 .footer {
   margin-top: 20px; }
@@ -6377,4 +6379,4 @@ html body {
       color: inherit; }
 
 
-/*# sourceMappingURL=index.9695d6b7f50c9f167e3e.css.map*/
+/*# sourceMappingURL=index.90e21d5c346e3a22a2d5.css.map*/
