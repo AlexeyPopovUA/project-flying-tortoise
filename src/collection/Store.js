@@ -1,4 +1,5 @@
 import Filter from "./../model/Filter";
+import orderBy from "lodash/orderBy";
 
 export default class Store {
     /**
@@ -86,6 +87,16 @@ export default class Store {
     }
 
     /**
+     * Sets and applies a new sorter
+     * @param {Sorter} sorter
+     */
+    setSorter(sorter) {
+        this._sorter = sorter;
+
+        this._applySorter();
+    }
+
+    /**
      * Saves filtered data
      * @private
      */
@@ -115,19 +126,10 @@ export default class Store {
 
     /**
      * todo Implement
-     * @param {Sorter} sorter
-     */
-    sort(sorter) {
-        this._sorter = sorter;
-        this._applySorter();
-    }
-
-    /**
-     * todo Implement
      * @private
      */
     _applySorter() {
-        console.warn("_applySorter");
+        this.data = orderBy(this.data, this._sorter.key, this._sorter.direction);
     }
 
     /**

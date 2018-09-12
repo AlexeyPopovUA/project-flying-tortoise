@@ -3,6 +3,7 @@ import Header from "../components/Header.jsx";
 import Grid from "../components/Grid.jsx";
 import Footer from "../components/Footer.jsx";
 import Filter from "../model/Filter";
+import Sorter from "../model/Sorter";
 
 export default class Main {
     constructor() {
@@ -19,6 +20,8 @@ export default class Main {
         this.store
             .load()
             .then(() => {
+                this.store.setSorter(new Sorter("creation_date", Sorter.DIRECTION.DESC));
+
                 document.body.appendChild(
                     <div className="main container-fluid">
                         {this.header.render()}
