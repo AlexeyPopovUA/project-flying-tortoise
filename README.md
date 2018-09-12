@@ -2,7 +2,26 @@
 
 [![Build Status](https://travis-ci.org/AlexeyPopovUA/project-flying-tortoise.svg?branch=master)](https://travis-ci.org/AlexeyPopovUA/project-flying-tortoise)
 
-It's a grid view :)
+This is a simple data viewer.
+
+
+**Features:**
+
+* It shows a data grid.
+
+* It loads data and sorts by date (desc order).
+
+* It supports ui side filtering by comment and rating.
+
+* It supports small mobile screens.
+
+
+**Technical stack:**
+
+Travis, Babel, Webpack, lodash, js, jsx, nodejs, jest, scss, html.
+
+
+**Dev instructions:**
 
 Demo [link](https://alexeypopovua.github.io/project-flying-tortoise/)
 
